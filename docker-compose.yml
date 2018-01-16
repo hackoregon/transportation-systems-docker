@@ -1,0 +1,20 @@
+version: '2'
+services:
+  transport-systems-service:
+    environment:
+    - DEBUG=${DEBUG}
+    build: .
+    image: "${DOCKER_IMAGE}"
+    command: ./code/bin/docker-entrypoint.sh
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+
+  # uncomment geocoder if using endpoint and add pword to env variables either in env.sh locally and/or in the travis build if deploying
+
+  # geocoder-service:
+  #     build: .
+  #     environment:
+  #         - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+  #     image: docker.io/znmeb/postgis:build

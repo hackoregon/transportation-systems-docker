@@ -1,0 +1,17 @@
+FROM python:2.7
+MAINTAINER Brian H. Grant <brian@hackoregon.org>
+ENV PYTHONUNBUFFERED 1
+EXPOSE 8000
+
+RUN mkdir /code
+WORKDIR /code
+RUN apt-get update && apt-get install -y \
+  binutils \
+  libproj-dev \
+  git \
+  gdal-bin
+ADD requirements.txt /code/
+RUN pip install -r requirements.txt
+RUN python
+ADD . /code/
+ENTRYPOINT [ "/code/bin/docker-entrypoint.sh" ]
