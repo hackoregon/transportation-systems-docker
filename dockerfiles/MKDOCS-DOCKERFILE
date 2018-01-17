@@ -1,7 +1,6 @@
-FROM python:2.7
+FROM python:3.6
 MAINTAINER Brian H. Grant <brian@hackoregon.org>
 ENV PYTHONUNBUFFERED 1
-EXPOSE 8000
 
 RUN mkdir /code
 WORKDIR /code
@@ -14,4 +13,3 @@ ADD requirements.txt /code/
 RUN pip install -r requirements.txt
 RUN python
 ADD . /code/
-ENTRYPOINT [ "/code/bin/docker-entrypoint.sh" ]

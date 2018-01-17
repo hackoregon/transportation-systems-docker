@@ -1,11 +1,14 @@
 version: '2'
 services:
-  transport-systems-service:
+  docs:
     environment:
     - DEBUG=${DEBUG}
-    build: .
+    - PROJECT_NAME=${PROJECT_NAME}
+    build:
+      context: .
+      dockerfile: ./dockerfiles/MKDOCS-DOCKERFILE
     image: "${DOCKER_IMAGE}"
-    command: ./code/bin/docker-entrypoint.sh
+    command: ./bin/MKDOCS-entrypoint.sh
     volumes:
       - .:/code
     ports:
