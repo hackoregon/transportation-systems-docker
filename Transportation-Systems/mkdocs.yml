@@ -1,1 +1,7 @@
-site_name: Our Docs
+site_name: Hack Oregon - Transportation Systems 2018
+theme: readthedocs
+
+pages:
+- 'index.md'
+- 'docker.md'
+- 'LICENSE.md'
