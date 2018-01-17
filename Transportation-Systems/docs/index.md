@@ -1,17 +1,16 @@
-# Welcome to MkDocs
+# Transportation Systems
 
-For full documentation visit [mkdocs.org](http://mkdocs.org).
+Hack Oregon exploring the Call to Action: What do we know today that can guide the Transportation Infrastructure for Smart Cities of tomorrow?
 
-## Commands
+## About the Theme
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs help` - Print this help message.
+All around the Nation, Transportation issues are increasingly impacting the lives of everyday citizens. As the Portland Metro region continues to grow, our infrastructure feels this strain. As populations rise and streets become more crowded, augmenting our travel with the many alternative modes of Transportation the City has to offer is critical. Through the successes of CIVIC, the Hack Oregon Transportation Team is committed to providing insights and solutions into the ever-growing problems surrounding Transportation in the Portland area and beyond.
 
-## Project layout
+### For Developers
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+Stay tuned for more information about contributing to this repository. Thanks!
+
+
+## License
+
+This project is licensed under the GNU 3 GENERAL PUBLIC LICENSE - see the [LICENSE.md](LICENSE) file for details
