@@ -1,15 +1,15 @@
 #! /bin/bash
-usage() { echo "Usage: $0 [-l] for a local build or [-t] for a travis build " 1>&2; exit 1; }
+usage() { echo "Usage: $0 [-d] for a docs build or [-g] for a geodjango build " 1>&2; exit 1; }
 
 source ./bin/env.sh
 
-while getopts ":lt" opt; do
+while getopts ":dg" opt; do
     case "$opt" in
-        l)
-          docker-compose -f docker-compose.yml build
+        d)
+          docker-compose -f ./composefiles/mkdocs-compose.yml build
           ;;
-        t)
-          docker-compose -f travis-docker-compose.yml build
+        g)
+          docker-compose -f ./composefiles/geodjango-compose.yml build
           ;;
         *)
           usage
