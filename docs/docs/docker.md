@@ -49,26 +49,7 @@ All work should be done using the "Stable" build.
 
 ### Installing for Windows
 
-*System Requirements*
 
-* README FIRST for Docker Toolbox and Docker Machine users: Docker for Windows requires Microsoft Hyper-V to run. The Docker for Windows installer will enable Hyper-V for you, if needed, and restart your machine. After Hyper-V is enabled, VirtualBox will no longer work, but any VirtualBox VM images will remain. VirtualBox VMs created with docker-machine (including the default one typically created during Toolbox install) will no longer start. These VMs cannot be used side-by-side with Docker for Windows. However, you can still use docker-machine to manage remote VMs.
-
-* Virtualization must be enabled. Typically, virtualization is enabled by default. (Note that this is different from having Hyper-V enabled.) For more detail see Virtualization must be enabled in Troubleshooting.
-
-* The current version of Docker for Windows runs on 64bit Windows 10 Pro, Enterprise and Education (1607 Anniversary Update, Build 14393 or later). In the future we will support more versions of Windows 10.
-
-* Containers and images created with Docker for Windows are shared between all user accounts on machines where it is installed. This is because all Windows accounts will use the same VM to build and run containers. In the future, Docker for Windows will better isolate user content.
-
-* Nested virtualization scenarios, such as running Docker for Windows on a VMWare or Parallels instance, might work, but come with no guarantees (i.e., not officially supported). For more information, see Running Docker for Windows in nested virtualization scenarios.
-
-If your system does not meet these minimum requirements you will not be able to run Docker on your Windows machine. You may attempt to run using [Docker Toolbox](https://docs.docker.com/toolbox/overview/) but this has not been tested and we may have limited assistance to troubleshoot issues.
-
-*Installation*
-
-When you are ready follow Docker's Official Guide to install Docker for Mac:  
-[Docker for Windows Installation](https://docs.docker.com/docker-for-windows/install/)
-
-All work should be done using the "Stable" build.
 
 ### Installing for Ubuntu/Linux Systems
 
