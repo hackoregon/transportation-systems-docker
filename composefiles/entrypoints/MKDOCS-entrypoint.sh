@@ -4,6 +4,6 @@
 
 cd docs
 
-mkdocs gh-deploy
+# mkdocs gh-deploy
 
 mkdocs serve -a 0.0.0.0:8000
