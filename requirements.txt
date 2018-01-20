@@ -1,2 +1,6 @@
-mkdocs
+sphinx
+sphinx-autobuild
+recommonmark
+restructuredtext-lint
+docutils>=0.11,<1.0
 cookiecutter
