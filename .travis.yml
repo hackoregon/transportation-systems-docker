@@ -2,10 +2,12 @@ sudo: required
 services:
   - docker
 
-before_install:
-  - ./bin/build-project.sh -g
+branches:
+  only:
+  - master
+
 script:
-  - docker images
+  - ./bin/build-project.sh -g
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
