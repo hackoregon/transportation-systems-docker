@@ -6,14 +6,15 @@ RUN mkdir /code
 WORKDIR /code
 RUN apt-get update && apt-get install -y \
   binutils \
-  libproj-dev \
-  git \
   gdal-bin \
-  libgeos-dev
+  git \
+  libgeos-dev \
+  libproj-dev \
+&& rm -rf /var/lib/apt/lists/*
 
-ADD requirements.txt /code/
+COPY requirements.txt /code/
 RUN pip install -r requirements.txt
-ADD /requirements/geodjango-requirements.txt /code/
+COPY /requirements/geodjango-requirements.txt /code/
 RUN pip install -r geodjango-requirements.txt
 RUN python
-ADD . /code/
+COPY . /code/

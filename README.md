@@ -62,7 +62,9 @@ To begin, navigate to [Docker for Windows Installation](https://docs.docker.com/
 
 After a restart, Docker will probably start automatically, but if not, simply open it through the icon. You should notice the whale in your notifications bar. From Git Bash, CMD, or PowerShell, run the following command:
 
-```docker run hello-world```
+```
+docker run hello-world
+```
 
 Docker should pull down the necessary image from the Docker daemon and display the results, thus verifying the proper installation.
 
