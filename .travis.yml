@@ -1,0 +1,21 @@
+sudo: required
+services:
+  - docker
+
+before_script:
+  - docker pull $DOCKER_USERNAME/$DOCKER_IMAGE || true
+
+script:
+  - ./bin/build-project.sh -t
+
+after_script:
+  - docker images
+
+before_deploy:
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+
+deploy:
+  provider: script
+  script: docker push $DOCKER_USERNAME/$DOCKER_IMAGE
+  on:
+    branch: master
