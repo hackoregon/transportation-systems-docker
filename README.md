@@ -76,3 +76,7 @@ You will want to consult Docker's Guides to installation on Linux Systems:
 * [Debian](https://docs.docker.com/engine/installation/linux/docker-ce/debian/)
 * [CentOS](https://docs.docker.com/engine/installation/linux/docker-ce/centos/)
 * [Fedora](https://docs.docker.com/engine/installation/linux/docker-ce/fedora/)
+
+### About this Repo
+
+This repo contains the source files for building the docker images that will be used to  and deploy the 2018 Hack Oregon Transportation Systems API and Database
