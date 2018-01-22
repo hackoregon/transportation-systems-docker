@@ -47,9 +47,24 @@ When you are ready follow Docker's Official Guide to install Docker for Mac:
 
 All work should be done using the "Stable" build.
 
-### Installing for Windows
+### Installing for Windows 10
+Some quick notes:
 
+* These instructions are for the stable release of Docker for Windows (as opposed to the edge release).
+* These instructions also assume a 64-bit Pro version of Windows with Hyper-V installed. If your machine does not meet these specs, please try [Docker Toolbox](https://docs.docker.com/toolbox/overview/). You could also run the local Ubuntu instance installed with the Creators Update, and use the [Ubuntu Install Instructions](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/).
+* This process will involve at least one restart.
+* The following tools are highly recommended for managing Docker for Windows:
+    * [Windows Git](https://git-scm.com/download/win)
+    * [Visual Studio Code](https://code.visualstudio.com/)
+    * Alternatively, you could use PowerShell or cmd
 
+To begin, navigate to [Docker for Windows Installation](https://docs.docker.com/docker-for-windows/install/#download-docker-for-windows) and download the stable install. Once downloaded, run the executable.
+
+After a restart, Docker will probably start automatically, but if not, simply open it through the icon. You should notice the whale in your notifications bar. From Git Bash, CMD, or PowerShell, run the following command:
+
+```docker run hello-world```
+
+Docker should pull down the necessary image from the Docker daemon and display the results, thus verifying the proper installation.
 
 ### Installing for Ubuntu/Linux Systems
 
