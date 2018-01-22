@@ -10,9 +10,11 @@ services:
     image: "${API_DOCKER_IMAGE}"
     command: ./entrypoints/GEODJANGO-entrypoint.sh
     volumes:
-      - .:/code
+      - ..:/code
     ports:
       - "8000:8000"
+    # depends_on:
+    #   - db
 
   # uncomment geocoder if using endpoint and add pword to env variables either in env.sh locally and/or in the travis build if deploying
 
