@@ -10,7 +10,7 @@ services:
     image: "${DOCKER_IMAGE}"
     command: ./bin/MKDOCS-entrypoint.sh
     volumes:
-      - .:/code
+      - ..:/code
     ports:
       - "8000:8000"
 
