@@ -79,4 +79,4 @@ You will want to consult Docker's Guides to installation on Linux Systems:
 
 ### About this Repo
 
-This repo contains the source files for building the docker images that will be used to  and deploy the 2018 Hack Oregon Transportation Systems API and Database
+This repo contains the source files for building the docker images that will be used to and deploy the 2018 Hack Oregon Transportation Systems API and Database. The base image has been built to use only env variables for repo name and other assets. As such it should be useful across other teams.
