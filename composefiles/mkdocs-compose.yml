@@ -5,10 +5,10 @@ services:
     - DEBUG=${DEBUG}
     - PROJECT_NAME=${PROJECT_NAME}
     build:
-      context: .
-      dockerfile: ./dockerfiles/MKDOCS-DOCKERFILE
-    image: "${DOCKER_IMAGE}"
-    command: ./bin/MKDOCS-entrypoint.sh
+      context: ..
+      dockerfile: /dockerfiles/MKDOCS-DOCKERFILE
+    image: "${DOCS_DOCKER_IMAGE}"
+    command: ./entrypoints/MKDOCS-entrypoint.sh
     volumes:
       - ..:/code
     ports:
