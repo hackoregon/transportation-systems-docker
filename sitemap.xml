@@ -4,7 +4,7 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2018-01-17</lastmod>
+     <lastmod>2018-01-26</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -12,7 +12,23 @@
     
     <url>
      <loc>/docker/</loc>
-     <lastmod>2018-01-17</lastmod>
+     <lastmod>2018-01-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/geodjango/</loc>
+     <lastmod>2018-01-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/howtouse/</loc>
+     <lastmod>2018-01-26</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -20,7 +36,7 @@
     
     <url>
      <loc>/LICENSE/</loc>
-     <lastmod>2018-01-17</lastmod>
+     <lastmod>2018-01-26</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
