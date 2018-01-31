@@ -1,7 +1,9 @@
-site_name: Hack Oregon - Transportation Systems 2018
+site_name: Hack Oregon - Docker Environments
 theme: readthedocs
 
 pages:
 - 'index.md'
 - 'docker.md'
+- 'geodjango.md'd
+- 'howtouse.md'
 - 'LICENSE.md'

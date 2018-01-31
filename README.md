@@ -1,8 +1,112 @@
-# Docker Environment
+## Quickstart
 
-This portion of the guide, will walk through setting up the Docker Environment to be used for development and deployment of the 2018 Hack Oregon Transportation Systems project.
+Quickest way to to get a GEODJANGO container up and running:
 
-It will also provide some introductory information into Docker to help our volunteers get up and running in this project season.
+1. Unless you are developing on the image itself you'll want to create your own Github repo and then clone locally so you have a base repo. Use the python .gitignore template.
+
+2.  cd into directory `$ cd <your-repo`
+
+3. Open the .gitignore file in your text editor and add: `**/env.sh` and save.
+
+4. Create a env.sh file (You might want to create a directory ie: `$mkdir bin` to house this and other files, but instructions will be based on all files at root).
+
+5. Open the env.sh file in a text editor and add the following variables with your chosen values:
+
+```
+export PROJECT_NAME='<YOUR_PROJECT_NAME>'
+export DEBUG='BOOL_DEBUG_MODE'
+export API_DOCKER_IMAGE='YOUR_DESIRED_LOCAL_DOCKER_IMAGE'
+export CONTAINER_NAME='LOCAL_CONTAINER_NAME'
+
+```
+
+6. Create GEODJANGO DOCKERFILE in root of github repo
+
+For the GeoDjango container, which can be used as the basis for any project needing to provide a Django Rest Framework API to serve GIS based data this would be your basic template:
+
+```
+FROM bhgrant/hacko-geodjango
+ENV PYTHONUNBUFFERED 1
+EXPOSE 8000
+
+WORKDIR /code
+COPY requirements.txt /code/
+RUN pip install -r requirements.txt
+RUN python
+COPY . /code/
+ENTRYPOINT [ "/code/docker-entrypoint.sh" ]
+```
+
+7. Create GeoDjango entrypoint file
+
+`$ touch docker-entrypoint.sh`
+
+Now let's open this file up in your text editor of choice.
+
+At this point you may only be entering in the basic django startup command to run the dev server environment:
+
+```
+#! /bin/bash
+
+python3 manage.py runserver 0.0.0.0:8000
+```
+
+Go ahead and save this file.
+
+8. Create the requirements.txt file  
+
+The above DOCKERFILE uses pip to install any additional python packages you may need. If you don't want to create this file at this time, you may opt not to but will have to remove the related lines from the DOCKERFILE.
+
+9. Create the docker-compose.yml file (You are probably going to want to include a POSTGRES or another database container in this but you should be able to run a basic development implementation using the defuault sqlite):
+```
+version: '3'
+services:
+  api:
+    environment:
+    - DEBUG=${DEBUG}
+    - PROJECT_NAME=${PROJECT_NAME}
+    build:
+      context: .
+    image: "${API_DOCKER_IMAGE}"
+    command: /docker-entrypoint.sh
+    volumes:
+      - ..:/code
+    ports:
+      - "8000:8000"
+```
+
+The [Docker-Compose Reference | Docker](https://docs.docker.com/compose/compose-file/) will be your source of truth on the individual pieces of this.
+
+10. Source the environment file: `source $ /path/to/env.sh`
+
+11. You should now be able to create an initial Django project by running the following command:
+
+```
+`docker-compose -p $PROJECT_NAME run api django-admin.py startproject $PROJECT_NAME .`
+```
+
+12. At this point you should be able to startup your basic Django app:
+
+```
+docker-compose -p $PROJECT_NAME up
+```
+
+13. And go to `localhost:8000` in your browser to see the initial DJANGO APP
+
+14. If you keep this container running and open a new terminal window you should be able to ssh into the container:
+
+```
+docker exec -it <YOUR_CONTAINER_NAME> /bin/bash
+```
+
+15. At this point you can run bash commands and the like.
+
+16. You should be able to start developing. You may want to add a more advanced database (https://github.com/hackoregon/postgis-geocoder-test), walkthrough the GeoDjango tutorial (https://docs.djangoproject.com/en/2.0/ref/contrib/gis/tutorial/), or build a Django Rest Framework (http://www.django-rest-framework.org/) app with the POSTGIS backing as next steps. Using the ssh shell could help with this.
+
+
+## Docker Environment
+
+This portion of the guide, will also provide some introductory information into Docker to help our volunteers get up and running in this project season.
 
 ## Getting Started - What is Docker?
 
@@ -48,25 +152,8 @@ When you are ready follow Docker's Official Guide to install Docker for Mac:
 All work should be done using the "Stable" build.
 
 ### Installing for Windows 10
-Some quick notes:
 
-* These instructions are for the stable release of Docker for Windows (as opposed to the edge release).
-* These instructions also assume a 64-bit Pro version of Windows with Hyper-V installed. If your machine does not meet these specs, please try [Docker Toolbox](https://docs.docker.com/toolbox/overview/). You could also run the local Ubuntu instance installed with the Creators Update, and use the [Ubuntu Install Instructions](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/).
-* This process will involve at least one restart.
-* The following tools are highly recommended for managing Docker for Windows:
-    * [Windows Git](https://git-scm.com/download/win)
-    * [Visual Studio Code](https://code.visualstudio.com/)
-    * Alternatively, you could use PowerShell or cmd
-
-To begin, navigate to [Docker for Windows Installation](https://docs.docker.com/docker-for-windows/install/#download-docker-for-windows) and download the stable install. Once downloaded, run the executable.
-
-After a restart, Docker will probably start automatically, but if not, simply open it through the icon. You should notice the whale in your notifications bar. From Git Bash, CMD, or PowerShell, run the following command:
-
-```
-docker run hello-world
-```
-
-Docker should pull down the necessary image from the Docker daemon and display the results, thus verifying the proper installation.
+<Update Coming>
 
 ### Installing for Ubuntu/Linux Systems
 
@@ -79,4 +166,4 @@ You will want to consult Docker's Guides to installation on Linux Systems:
 
 ### About this Repo
 
-This repo contains the source files for building the docker images that will be used to  and deploy the 2018 Hack Oregon Transportation Systems API and Database
+This repo contains the source files for building the docker images that will be used to and deploy the 2018 Hack Oregon Transportation Systems API and Database. The base image has been built to use only env variables for repo name and other assets. As such it should be useful across other teams.
