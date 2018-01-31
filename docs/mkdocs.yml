@@ -4,6 +4,6 @@ theme: readthedocs
 pages:
 - 'index.md'
 - 'docker.md'
-- 'geodjango.md'
+- 'geodjango.md'd
 - 'howtouse.md'
 - 'LICENSE.md'
